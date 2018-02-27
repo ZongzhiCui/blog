@@ -1,0 +1,93 @@
+<?php include './Application/View/Admin/User/header.html';?>
+<div class="centercontent">
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        th, td {
+            border: solid 1px #ccc;
+            padding: 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        #outline {
+            width: 160px;
+        }
+
+        #outline:focus {
+            outline: dashed 2px #cc350e;
+            background: #A1A3AB;
+        }
+        .user_w{
+            width: 120px;
+        }
+    </style>
+    <!--搜索表单-->
+    <form action="./index.php?p=Admin&c=user&a=index" method="post">
+        <input type="text" name="keyword" placeholder="请输入要搜索的内容">
+        <input type="submit" value="serach">
+    </form>
+    <!--管理员列表-->
+    <table>
+        <caption>作者列表</caption>
+        <tr>
+            <th>管理员ID</th>
+            <th>管理员</th>
+            <th>管理员头像</th>
+            <th>邮箱</th>
+            <th>注册时间</th>
+            <th>最后登录时间</th>
+            <th>最后登录IP</th>
+            <th>操作</th>
+        </tr>
+        <?php foreach($rs as $row):?>
+        <tr>
+            <td><?=$row['id']?></td>
+            <td><?=$row['username']?></td>
+            <td><img src="<?=$row['head']?>" alt="图片失效或者不存在"></td>
+            <td><?=$row['email']?></td>
+            <td><?=$row['add_time']?></td>
+            <td><?=$row['last_login_time']==0?'未登录':date('Y-m-d H:i:s',$row['last_login_time'])?></td>
+            <td><?=$row['last_login_ip']==0?'未登录':long2ip($row['last_login_ip'])?></td>
+            <td>
+                <a href="index.php?p=Admin&c=user&a=edit&id=<?=$row['id']?>">修改</a>
+                <a href="index.php?p=Admin&c=user&a=delete&id=<?=$row['id']?>">删除</a>
+                <a href="index.php?p=Admin&c=user&a=edit_pwd&id=<?=$row['id']?>">修改密码</a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+        <!--管理员的添加-->
+        <form action="./index.php?p=Admin&c=user&a=add_save" method="post" enctype="multipart/form-data">
+            <tr>
+                <td>添加管理员</td>
+                <td><input class="user_w" type="text" name="username" placeholder="管理员名" required="required"></td>
+                <td><input class="user_w" type="file" name="head" placeholder="管理员头像" required="required"></td>
+                <td><input class="user_w" id="outline" type="email" name="email" placeholder="邮箱" required="required"></td>
+                <td><?=date('Y-m-d H:i:s')?></td>
+                <td style="padding: 13px 5px;"><input class="user_w" type="password" name="pwd1" placeholder="输入密码"
+                                                      required="required"></td>
+                <td style="padding: 13px 5px;"><input class="user_w" type="password" name="pwd2" placeholder="确认密码"
+                                                      required="required"></td>
+                <td><input type="submit" value="确认添加"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="3"><?=$html;?></td>
+                <td><a href="./index.php?p=Admin&c=Home&a=home">回到home</a></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </form>
+    </table>
+
+</div><!-- centercontent -->
+
+</div><!--bodywrapper-->
+
+</body>
+</html>

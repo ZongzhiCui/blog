@@ -1,0 +1,55 @@
+<?php include './Application/View/Admin/User/header.html';?>
+    <div class="centercontent">
+
+        <style>
+            table{
+                border-collapse: collapse;
+                margin: 0 auto;
+                width: 100%;
+            }
+            th,td{
+                border: solid 1px #ccc;
+                padding: 5px;
+                text-align: center;
+            }
+            #outline:focus{
+                outline: dashed 2px #cc350e;
+                background: #A1A3AB;
+            }
+        </style>
+
+        <form action="./index.php?p=Admin&c=Article&a=edit_save" method="post" enctype="multipart/form-data">
+            <h3>文章列表</h3>
+            <input type="hidden" name="id" value="<?=$row['id']?>">
+            <p>标&emsp;&emsp;题:<input style="width: 150px" type="text" name="title" value="<?=$row['title']?>" required="required"></p><br/>
+            <p>简&emsp;&emsp;介:<input style="width: 150px" type="text" name="intro" value="<?=$row['intro']?>" required="required"></p><br/>
+            <p>内&emsp;&emsp;容:<input style="width: 150px" type="text" name="content" value="<?=$row['content']?>" required="required"></p><br/>
+            <p>作&emsp;&emsp;者: <select name="user_id">
+            <?php foreach($row['user'] as $user):?>
+            <option value="<?=$user['id']?>" <?=$user['id']==$row['user_id']?'selected':''?>><?=$user['username']?></option>
+            <?php endforeach;?>
+            </select></p><br/>
+            <div style="position: absolute;right: 0;top: 0;"><img style="max-width: 500px " src="<?=$row['logo']?>" alt=""></div>
+            <p>文章图片:<input type="file" name="logo"></p><br/>
+            <p>评论数量:<input style="width: 150px" type="text" name="comments" value="<?=$row['comments']?>" required="required"></p><br/>
+            <p>收藏数量:<input style="width: 150px" type="text" name="collect" value="<?=$row['collect']?>" required="required"></p><br/>
+            <p>状&emsp;&emsp;态:
+                <label><input type="radio" name="status" <?=$row['status']==1?'checked':''?> value="1">审核通过</label>
+                <label><input type="radio" name="status" <?=$row['status']==0?'checked':''?> value="0">未审核</label>
+                <label><input type="radio" name="status" <?=$row['status']==-1?'checked':''?> value="-1">已删除</label>
+            </p><br/>
+            <p>文章分类: <select name="cate_id">
+                <?php foreach($row['cates'] as $cate):?>
+                <option value="<?=$cate['id']?>" <?=$cate['id']==$row['cate_id']?'selected':''?>><?=$cate['name_txt']?></option>
+                <?php endforeach;?>
+            </select></p><br/>
+            <p><input style="margin-left: 40px;" type="submit" value="确认修改"></p>
+        </form>
+        
+	</div><!-- centercontent -->
+    
+    
+</div><!--bodywrapper-->
+
+</body>
+</html>

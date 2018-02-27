@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<table>
+
+    <form action="./index.php?p=Home&c=Login&a=add_save" method="post" enctype="multipart/form-data">
+        <tr>
+            <td>添加管理员</td>
+        </tr>
+        <tr>
+            <td><input class="user_w" type="text" name="username" placeholder="管理员名" required="required"></td>
+        </tr>
+        <tr>
+            <td><input class="user_w" type="file" name="head" placeholder="管理员头像"></td>
+        </tr>
+        <tr>
+            <td><input class="user_w" type="text" name="nickname" placeholder="昵称" required="required"></td>
+        </tr>
+        <tr>
+            <td><input class="user_w" id="outline" type="email" name="email" placeholder="邮箱" required="required"></td>
+        </tr>
+        <tr>
+            <td><input class="user_w" type="password" name="pwd1" placeholder="输入密码"
+                                                  required="required"></td>
+        </tr>
+        <tr>
+            <td><input class="user_w" type="password" name="pwd2" placeholder="确认密码"
+                                                  required="required"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="确认添加"></td>
+        </tr>
+    </form>
+</table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?php include './Application/View/Admin/User/header.html';?>
+    <div class="centercontent">
+
+        <style>
+            table{
+                border-collapse: collapse;
+                margin: 0 auto;
+                width: 100%;
+            }
+            th,td{
+                border: solid 1px #ccc;
+                padding: 5px;
+                text-align: center;
+            }
+            #outline:focus{
+                outline: dashed 2px #cc350e;
+                background: #A1A3AB;
+            }
+        </style>
+
+        <form action="./index.php?p=Admin&c=user&a=edit_pwd_save" method="post">
+            <h3>作者列表</h3>
+            <input type="hidden" name="id" value="<?=$id?>">
+            <p>原始&emsp;&emsp;密码:<input id="outline" type="text" name="pwd" placeholder="原始密码" required="required"></p>
+            <p>修改后的密码:<input type="password" name="pwd1" placeholder="修改后的密码" required="required"></p>
+            <p>再次确认密码:<input type="password" name="pwd2" placeholder="再次确认密码" required="required"></p>
+            <p><input style="margin-left: 76px;" type="submit" value="确认修改"></p>
+        </form>
+        
+	</div><!-- centercontent -->
+    
+    
+</div><!--bodywrapper-->
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?php include './Application/View/Admin/User/header.html';?>
+<div class="centercontent">
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        th, td {
+            border: solid 1px #ccc;
+            padding: 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        #outline {
+            width: 160px;
+        }
+
+        #outline:focus {
+            outline: dashed 2px #cc350e;
+            background: #A1A3AB;
+        }
+        .user_w{
+            width: 120px;
+        }
+    </style>
+<form action="index.php?p=Admin&c=Category&a=add_save" method="post">
+    <br>
+    <p>分类&emsp;名称: <input type="text" name="name"></p><br>
+    <p>上一级分类:
+        <select name="pkey">
+            <option value="0">顶级分类</option>
+            <?php foreach($cates as $row):?>
+            <option value="<?=$row['id']?>"><?=$row['name_txt']?></option>
+            <?php endforeach;?>
+        </select>
+    </p><br>
+    <p><input type="submit"></p>
+</form>
+</div><!-- centercontent -->
+
+</div><!--bodywrapper-->
+
+</body>
+</html>

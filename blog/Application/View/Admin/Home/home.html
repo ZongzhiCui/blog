@@ -1,0 +1,30 @@
+<?php include VIEW_PATH.'Admin/User/header.html';?>
+
+<div class="centercontent">
+    <h4>欢迎管理员</h4>
+    <br/>
+    <form action="./index.php?p=Admin&c=Home&a=edit" method="post">
+        <p>&emsp;管理员:&emsp;
+            <span style="color: #cc350e;font-size: 33px"><?=$_SESSION['admin']['username']?></span>&emsp;&emsp;
+            <input style="width: 138px;padding-right: 80px;" type="text" name="username" placeholder="新名字">
+            <input type="hidden" name="id" value="<?=$_SESSION['admin']['id']?>">
+            <input type="hidden" name="which" value="a_username">
+            <button><span style="color: #cc350e">修改名字</span></button>
+        </p>
+    </form>
+    <form action="./index.php?p=Admin&c=Home&a=edit" method="post" enctype="multipart/form-data">
+        <p>头&emsp;&emsp;像:
+            <img src="<?=$_SESSION['admin']['head']?>" alt="1">&emsp;&emsp;
+            <input type="file" name="head" placeholder="上传新头像">
+            <input type="hidden" name="id" value="<?=$_SESSION['admin']['id']?>">
+            <input type="hidden" name="which" value="a_head">
+            <button><span style="color: #cc350e">修改头像</span></button>
+        </p>
+    </form>
+    <br/>
+    <h3>
+        <a href="index.php?p=Admin&c=user&a=edit&id=<?=$_SESSION['admin']['id']?>">修改详细信息</a>
+    </h3>
+</div>
+</body>
+</html>

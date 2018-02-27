@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <?php include 'D:\server\apache\admin\blog\Application\View\Home\Home\link_script.html';?>
+<body>
+<?php include 'D:\server\apache\admin\blog\Application\View\Home\Home\header.html';?>
+<!--start-slider-->
+<div class="slider-bg">
+    <div class="container">
+        <div class="grid-1">
+            <div class="col-md-5 left-grid-1 wow bounceInLeft" data-wow-delay="0.4s">
+                <h1>Welcome</h1>
+                <h2>MY</h2>
+                <h3>主页cuioo.cn</h3>
+            </div>
+            <div class="col-md-7 right-grid-1 wow bounceInRight" data-wow-delay="0.7s">
+                <div class="slider">
+                    <div class="callbacks_container">
+                        <ul class="rslides" id="slider">
+                            <li>
+                                <img style="height: 383px" src="./public/Home/images/slide1.png" class="img-responsive"
+                                     alt=""/>
+                            </li>
+                            <li>
+                                <img src="./public/Home/images/slide2.png" class="img-responsive" alt=""/>
+                            </li>
+                            <li>
+                                <img src="./public/Home/images/slide3.png" class="img-responsive" alt=""/>
+                            </li>
+                            <li>
+                                <img src="./public/Home/images/slide4.png" class="img-responsive" alt=""/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </script>
+            <script src="./public/Home/js/responsiveslides.min.js"></script>
+
+            <script>
+                $(function () {
+                    $("#slider").responsiveSlides({
+                        auto: true,
+                        nav: true,
+                        speed: 500,
+                        namespace: "callbacks",
+                        pager: true,
+                    });
+                });
+            </script>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--//end-slider-->
+<!--start-services-->
+<div id="about" class="service-section">
+    <div class="container">
+        <!--搜索表单-->
+        <form action="./index.php?p=Home&c=Article&a=index" method="post">
+            <input type="text" name="keyword" placeholder="请输入要搜索的内容">
+            <input type="submit" value="search">
+        </form>
+        <!--//显示数据-->
+        <?php foreach($arts as $row):?>
+        <div style="border: #ff7a21 1px solid;min-height: 104px;" class="serve-grids wow bounceIn animated" data-wow-delay="0.4s">
+            <div style="position: absolute;right: 1px;top: 1px;">
+                <img src="<?=$row['thumb_logo']?>" alt="微略图">
+            </div>
+                <a href="index.php?p=Home&c=Article&a=content&id=<?=$row['id']?>"><h4 style="max-width: 958px"><?=$row['title']?>->
+                    <?=$row['intro']?></h4>
+                    <p><?=$row['content']?></p></a>
+                <a href="./index.php?p=Home&c=Article&a=edit&id=<?=$row['id']?>">修改</a>
+                <a href="./index.php?p=Home&c=Article&a=delete&id=<?=$row['id']?>">删除</a>
+                <a href="./index.php?p=Home&c=Article&a=collect&id=<?=$row['id']?>">收藏(<?=$row['collect']?>)</a>
+                <?php foreach ($row['reply'] as $k=>$v):?>
+                <div style="max-width: 958px">
+                    <span><?=$v['username']?> 在 <?=$v['add_time']?> 回复: </span><?=$v['comment']?> &emsp;
+                    <a href="index.php?p=Home&c=Article&a=reply_delete&id=<?=$v['id'];?>">删除回复</a>
+                </div>
+                <?php endforeach;?>
+                <form id="display" action="./index.php?p=Home&c=Article&a=reply_save" method="post">
+                    <input type="hidden" name="art_id" value="<?=$row['id']?>">
+                    &emsp;
+                    <label><input type="checkbox" name="nick" value="7">选中匿名评论</label>
+                    <input type="hidden" name="user_id"
+                           value="<?php @session_start();echo($_SESSION['admin']['id'])?>">
+                    <input style="width: 400px;" type="text" name="comment" required="required" placeholder="回&emsp;复">
+                    <input type="submit" value="回复">
+                </form>
+        </div>
+        <hr/>
+        <?php endforeach;?>
+        <div style="text-align: center"><?=$html?></div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--//end-services-->
+

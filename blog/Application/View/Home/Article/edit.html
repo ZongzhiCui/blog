@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Single</title>
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen"/>
+    <?php include 'D:\server\apache\admin\blog\Application\View\Home\Home\link_script.html';?>
+<body>
+<?php include 'D:\server\apache\admin\blog\Application\View\Home\Home\header.html';?>
+
+<!--start-single-->
+<div class="container">
+    <div class="content">
+        <div class="col-md-9 single-page">
+            <form action="index.php?p=Home&c=Article&a=edit_save" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?=$row['id']?>">
+                <div class="print-main wow fadeInLeft animated" data-wow-delay="0.4s">
+                    <h3><input type="text" name="title" value="<?=$row['title']?>"></h3>
+                    <p class="likes">文章发布时间: <?=$row['add_time']?> &emsp; 作者: <select name="user_id">
+                        <?php foreach($row['user'] as $user):?>
+                        <option value="<?=$user['id']?>" <?=$user['id']==$row['user_id']?'selected':''?>><?=$user['username']?></option>
+                        <?php endforeach;?>
+                    </select> / <a
+                            href="#"><?=$row['collect']?> Collect</a> / <a href="#"><?=$row['comments']?> Comments</a>
+                    </p>
+                    <a href=""><img src="<?=$row['logo']?>" class="img-responsive" alt=""/></a>
+                    <input type="file" name="logo">
+                    <ul class="single-icons">
+                        <li><a href="#"><i class="penc"></i></a></li>
+                        <li><i class="date2"></i></li>
+                    </ul>
+                    <p class="span"><a href="#">3D Software,</a><a href="#"> Files to Print </a> | 来自:<?=$row['intro']?>
+                    </p>
+                    <p class="ptext"><textarea name="content" cols="119" rows="10"><?=$row['content']?></textarea></p>
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<!--/start-footer-section-->
+<div class="footer-section">
+    <div class="container">
+        <div class="footer-grids wow bounceIn animated" data-wow-delay="0.4s">
+            <div class="col-md-3 footer-grid">
+                <h4>About studeon</h4>
+                <div class="border2"></div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est
+                    felis.</p>
+                <p class="sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at
+                    convallis est felis.</p>
+            </div>
+            <div class="col-md-3 footer-grid tags">
+                <h4>the tags</h4>
+                <div class="border2"></div>
+                <ul class="tag">
+                    <li><a href="#">Awesome</a></li>
+                    <li><a href="#">Strategy</a></li>
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Development</a></li>
+                    <li><a href="#">Css</a></li>
+                    <li><a href="#">photoshop</a></li>
+                    <li><a href="#">Html</a></li>
+                    <li><a href="#">Awesome</a></li>
+                    <li><a href="#">Strategy</a></li>
+                    <li><a href="#">Photoshop</a></li>
+                    <li><a href="#">Html</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-grid tweet">
+                <h4>latest tweets</h4>
+                <div class="border2"></div>
+                <div class="icon-3-square">
+                    <a href="#"><i class="square-3"></i></a>
+                </div>
+                <div class="icon-text">
+                    <p>I like this awesome freebie. Check it out<a href="#"> @http://t.co/9vslJFpW </a></p>
+                    <h5>About 15 mins</h5>
+                </div>
+                <div class="clearfix"></div>
+                <div class="icon-3-square">
+                    <a href="#"><i class="square-3"></i></a>
+                </div>
+                <div class="icon-text">
+                    <p>I like this awesome freebie. Check it out<a href="#"> @http://t.co/9vslJFpW </a></p>
+                    <h5>About 15 mins</h5>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-3 footer-grid flickr">
+                <h4>flickr feed</h4>
+                <div class="border2"></div>
+                <div class="flickr-grids">
+                    <div class="flickr-grid">
+                        <a href="#"><img src="./public/Home/images/f1.png" alt=" " title="CEO"/></a>
+                    </div>
+                    <div class="flickr-grid">
+                        <a href="#"><img src="./public/Home/images/f2.png" alt=" " title="GM"/></a>
+                    </div>
+                    <div class="flickr-grid">
+                        <a href="#"><img src="./public/Home/images/f3.png" alt=" " title="CEO"/></a>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="flickr-grid">
+                        <a href="#"><img src="./public/Home/images/f4.png" alt=" " title="GM"/></a>
+                    </div>
+                    <div class="flickr-grid">
+                        <a href="#"><img src="./public/Home/images/f3.png" alt=" " title="CEO"/></a>
+                    </div>
+                    <div class="flickr-grid">
+                        <a href="#"><img src="./public/Home/images/f2.png" alt=" " title="GM"/></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--//end-footer-section-->
+<!--/start-copyright-section-->
+<div class="copyright">
+    <div class="container">
+        <div class="logo2  wow bounceInLeft" data-wow-delay="0.4s"><a href="index.html"><img
+                src="./public/Home/images/logo2.png" alt="" title="logo"/></a></div>
+        <p class="write  wow bounceInRight" data-wow-delay="0.4s">Copyright &copy; 2015.Company name All rights
+            reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect
+            from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<!--//end-copyright-section-->

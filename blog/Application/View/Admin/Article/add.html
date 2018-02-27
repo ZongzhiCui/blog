@@ -1,0 +1,36 @@
+<?php include './Application/View/Admin/User/header.html';?>
+    <div class="centercontent">
+
+        <style>
+            table{
+                border-collapse: collapse;
+                margin: 0 auto;
+                width: 100%;
+            }
+            th,td{
+                border: solid 1px #ccc;
+                padding: 5px;
+                text-align: center;
+            }
+            #outline:focus{
+                outline: dashed 2px #cc350e;
+                background: #A1A3AB;
+            }
+        </style>
+
+        <form action="./index.php?p=Home&c=MyArticle&a=add_save" method="post" enctype="multipart/form-data">
+            <h3>添加文章</h3>
+            <p>标&emsp;&emsp;题:<input style="width: 150px" type="text" name="title" required="required"></p><br/>
+            <p>简&emsp;&emsp;介:<input style="width: 150px" type="text" name="intro" required="required"></p><br/>
+            <p>内&emsp;&emsp;容:<input style="width: 150px" type="text" name="content" required="required"></p><br/>
+            <p>文章图片:<input type="file" name="logo" required="required"></p><br/>
+            <p><input style="margin-left: 40px;" type="submit" value="确认修改"></p>
+        </form>
+        
+	</div><!-- centercontent -->
+    
+    
+</div><!--bodywrapper-->
+
+</body>
+</html>

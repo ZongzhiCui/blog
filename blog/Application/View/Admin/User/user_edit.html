@@ -1,0 +1,38 @@
+<?php include VIEW_PATH.'Admin/User/header.html';?>
+    <div class="centercontent">
+
+        <style>
+            table{
+                border-collapse: collapse;
+                margin: 0 auto;
+                width: 100%;
+            }
+            th,td{
+                border: solid 1px #ccc;
+                padding: 5px;
+                text-align: center;
+            }
+            #outline:focus{
+                outline: dashed 2px #cc350e;
+                background: #A1A3AB;
+            }
+        </style>
+
+        <form action="./index.php?p=Admin&c=user&a=edit_save" method="post" enctype="multipart/form-data">
+            <h3>作者列表</h3>
+            <input type="hidden" name="id" value="<?=$user['id']?>">
+            <p>&emsp;管理员:<input style="width: 150px" type="text" name="username" value="<?=$user['username']?>" required="required"></p>
+            <p>修改头像:<input type="file" name="head" required="required"></p>
+            <p>&emsp;管理员:<input style="width: 150px" type="text" name="nickname" value="<?=$user['nickname']?>" required="required"></p>
+            <p><img src="<?=$user['head']?>" alt="1"></p>
+            <p>邮&emsp;&emsp;箱:<input style="width: 150px" id="outline" type="text" name="email" value="<?=$user['email']?>" required="required"></p>
+            <p><input style="margin-left: 40px;" type="submit" value="确认修改"></p>
+        </form>
+        
+	</div><!-- centercontent -->
+    
+    
+</div><!--bodywrapper-->
+
+</body>
+</html>

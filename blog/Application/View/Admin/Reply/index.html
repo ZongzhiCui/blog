@@ -1,0 +1,79 @@
+<?php include './Application/View/Admin/User/header.html';?>
+<div class="centercontent">
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        th, td {
+            border: solid 1px #ccc;
+            padding: 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        #outline {
+            width: 160px;
+        }
+
+        #outline:focus {
+            outline: dashed 2px #cc350e;
+            background: #A1A3AB;
+        }
+        .user_w{
+            width: 120px;
+        }
+    </style>
+    <!--搜索表单-->
+    <form action="./index.php?p=Admin&c=Reply&a=index" method="post">
+        <input type="text" name="keyword" placeholder="请输入要搜索的内容">
+        <input type="submit" value="search">
+    </form>
+    <!--管理员列表-->
+    <table>
+        <caption>留言列表</caption>
+        <tr>
+            <th>留言ID</th>
+            <th>文章ID</th>
+            <th>作者ID</th>
+            <th>留言内容</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        <?php foreach($rs as $row):?>
+        <tr>
+            <td><?=$row['id']?></td>
+            <td><?=$row['art_id']?></td>
+            <td><?=$row['user_id']?></td>
+            <td><?=mb_substr($row['comment'],0,30);?>...</td>
+            <td>
+                <?php if($row['status']==0){
+                    echo '正常';
+                }elseif($row['status']==-1){
+                    echo '已删除';
+                }?>
+            </td>
+            <td>
+                <a href="#">添加</a>
+                <a href="#">修改</a>
+                <a href="index.php?p=Admin&c=Reply&a=delete&id=<?=$row['id']?>">删除</a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="2"><?=$html;?></td>
+                <td><a href="./index.php?p=Admin&c=Home&a=home">回到home</a></td>
+                <td></td>
+            </tr>
+    </table>
+
+</div><!-- centercontent -->
+
+</div><!--bodywrapper-->
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+
+<div class="header box css3-shadow" id="head">
+    <div class="container">
+        <div class="header-top">
+            <div class="logo wow bounceInLeft" data-wow-delay="0.4s">
+                <!--<a href="index.html"><img src="images/logo.png" alt=""/></a>-->
+                <a href="index.php"><h1>MY-home.</h1> </a>
+            </div>
+            <div class="h_menu4"><!-- start h_menu4 -->
+                <a class="toggleMenu" href="#">Menu</a>
+                <ul class="nav">
+                    <li class="active"><a class="scroll" href="index.php">主页.</a></li>
+
+                    <li><a href="index.php?p=Home&c=Article&a=index" class="scroll">文章</a>
+                        <ul>
+                            <?php foreach($cates as $cate):?>
+                            <li><a href="index.php?p=Home&c=Article&a=index&id=<?=$cate['id']?>"><?=$cate['name_txt']?></a></li>
+                            <?php endforeach;?>
+                        </ul>
+                    </li>
+<!--                    <li><a href="portfolio.php">相册</a></li>
+                    <li><a href="feature.html">专栏</a>
+                        <ul>
+                            <li><a href="feature.html">Typography</a></li>
+                            <li><a href="feature.html">Shortcodes</a></li>
+                            <li><a href="feature.html">Columns</a></li>
+                            <li><a href="feature.html">Pricing plans</a></li>
+                            <li><a href="feature.html">Alerts</a></li>
+                            <li><a href="feature.html">Services</a></li>
+                        </ul>
+                    </li>-->
+                    <li><a href="index.php?p=Home&c=Article&a=comments" class="scroll">热门文章</a></li>
+                    <li><a href="index.php?p=Home&c=Article&a=collects" class="scroll">最多收藏</a></li>
+                    <li><a href="#">我的</a>
+                        <ul>
+                            <li><a href="index.php?p=Home&c=MyArticle&a=add">发布文章</a></li>
+                            <li><a href="index.php?p=Home&c=MyArticle&a=index">我的文章</a></li>
+                            <li><a href="index.php?p=Home&c=MyArticle&a=keep">我的收藏</a></li>
+                            <li><a href="index.php?p=Home&c=MyArticle&a=reply">我回复的</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+                <script type="text/javascript" src="./public/Home/js/nav.js"></script>
+            </div><!-- end h_menu4 -->
+            <div class="social_icons wow bounceInRight" data-wow-delay="0.4s">
+                <ul>
+                    <?php
+                    @session_start();
+                    if (!empty($_SESSION['admin'])){?>
+                    <li><a href="index.php?p=Home&c=Home&a=edit"><?=$_SESSION['admin']['username'].'&emsp;欢迎您的光临'?></a></li>
+                    <?php }else{?>
+                    <li><a href="index.php?p=Home&c=Login&a=index">登录</a></li>
+                    <?php }?>
+                    <li><a href="#"><i class="facebook"></i></a></li>
+                    <li><a href="#"><i class="twitter"></i></a></li>
+                    <li><a href="#"><i class="youtube"></i></a></li>
+                    <!--<li><a href="#"><i class="fa-wechat"></i></a></li>-->
+                </ul>
+            </div>
+
+            <div class="clearfix"> </div>
+
+        </div><!-- end header_main4 -->
+    </div>
+</div>
